@@ -23,6 +23,7 @@ createOrUpdateBtn.addEventListener('click', (e) => {
             edited: moment.now(),
             created: moment.now()
         })
+        sortNotes(notes)
     }
     saveNotes(notes)
     location.assign('./index.html')
