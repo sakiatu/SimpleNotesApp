@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Notes App</h1>
-<h2>Take notes and Never Forget</h2>
+<header class="header">
+    <div class="container">
+        <h1 class="header__title">Notes App</h1>
+        <h2 class="header__subtitle">Take notes and Never Forget</h2>
+    </div>
+</header>
 
-<button id="create-note">Create Note</button>
-<span>Sort By: </span>
-<select name="sort-by" id="sort-by">
-    <option value="edited">Last Edited</option>
-    <option value="created">Created</option>
-    <option value="alphabetically">Alphabetically</option>
-</select>
-<div id="notes">
+<div class="actions">
+    <div class="actions__container actions__container--spaced">
+        <select name="sort-by" id="sort-by" class="dropdown">
+            <option value="edited">Last Edited</option>
+            <option value="created">Created</option>
+            <option value="alphabetically">Alphabetically</option>
+        </select>
+        <button id="create-note" class="button">Create Note</button>
+    </div>
+</div>
+
+
+
+<div class="container" id="notes">
 
 </div>
 

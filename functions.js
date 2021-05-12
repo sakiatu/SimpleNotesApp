@@ -1,12 +1,17 @@
 const createNoteItem = (note) => {
-    const noteEl = document.createElement('p')
-    const textEl = document.createElement('span')
-    const dateEl = document.createElement('span')
+    const noteEl = document.createElement('a')
+    const textEl = document.createElement('p')
+    const dateEl = document.createElement('p')
     const deleteBtn = document.createElement('button')
     textEl.textContent = note.title
     textEl.style.fontSize = '200%'
-    dateEl.textContent = ` #Edited: ${moment(note.edited).fromNow()} and Created: ${moment(note.created).fromNow()}`
-    deleteBtn.textContent = 'x'
+    dateEl.textContent = `Edited ${moment(note.edited).fromNow()} | Created ${moment(note.created).fromNow()}`
+    deleteBtn.textContent = 'Delete this note'
+
+    noteEl.classList.add('list-item')
+    textEl.classList.add('list-item__title')
+    dateEl.classList.add('list-item__subtitle')
+    deleteBtn.classList.add('delete-button')
 
     noteEl.appendChild(textEl)
     noteEl.appendChild(dateEl)
@@ -26,9 +31,16 @@ const createNoteItem = (note) => {
 const renderNotes = (notes) => {
     const notesDiv = document.querySelector('#notes')
     notesDiv.innerHTML = ''
+    if(notes.length>0)
     notes.forEach(note => {
         notesDiv.appendChild(createNoteItem(note))
     })
+    else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No notes yet'
+        emptyMessage.classList.add('empty-message')
+        notesDiv.appendChild(emptyMessage)
+    }
 }
 const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
